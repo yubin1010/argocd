@@ -4,6 +4,7 @@ server:
     annotations:
       service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
       service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    loadBalancerIP: ""
   persistentVolume:
     storageClass: gp2
 alertmanager:
