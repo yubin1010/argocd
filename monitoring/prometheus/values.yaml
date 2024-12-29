@@ -1,0 +1,34 @@
+server:
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+  persistentVolume:
+    storageClass: gp2
+  resources:
+    requests:
+      memory: 500Mi
+      cpu: 200m
+alertmanager:
+  persistentVolume:
+    storageClass: gp2
+  resources:
+    requests:
+      memory: 300Mi
+      cpu: 100m
+nodeExporter:
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+kubeStateMetrics:
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+pushgateway:
+  resources:
+    requests:
+      memory: 200Mi
+      cpu: 100m
