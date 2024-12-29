@@ -6,15 +6,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://prometheus-community.github.io/helm-charts'  # Helm Chart 저장소
-    chart: prometheus  # Helm Chart 이름
-    targetRevision: 26.0.1  # 사용하려는 Chart 버전
+    repoURL: 'https://github.com/yubin1010/argocd.git'
+    targetRevision: HEAD
+    path: monitoring/prometheus
     helm:
       valueFiles:
-        - values2.yaml  # Git에서 참조할 values 파일
+        - values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'  # EKS 클러스터
-    namespace: monitoring  # Prometheus를 설치할 네임스페이스
+    server: 'https://kubernetes.default.svc'
+    namespace: monitoring
   syncPolicy:
     automated:
       prune: true
