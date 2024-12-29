@@ -17,18 +17,3 @@ alertmanager:
     requests:
       memory: 300Mi
       cpu: 100m
-nodeExporter:
-  resources:
-    requests:
-      memory: 200Mi
-      cpu: 100m
-kubeStateMetrics:
-  resources:
-    requests:
-      memory: 200Mi
-      cpu: 100m
-pushgateway:
-  resources:
-    requests:
-      memory: 200Mi
-      cpu: 100m
