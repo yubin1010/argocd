@@ -16,7 +16,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
-  createNamespace: true
   ignoreDifferences:
     - group: ""
       kind: ConfigMap
