@@ -16,6 +16,6 @@ spec:
       containers:
       - name: weather-app
         image: 650182177203.dkr.ecr.ap-northeast-3.amazonaws.com/weather-app
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
-      imagePullPolicy: Always
