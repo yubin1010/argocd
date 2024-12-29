@@ -3,11 +3,14 @@ kind: Service
 metadata:
   name: weather-service
   namespace: default
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
 spec:
   selector:
     app: weather-app
-  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
       targetPort: 5000
+  type: LoadBalancer
