@@ -6,18 +6,17 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/yubin1010/argocd.git'
-    targetRevision: HEAD
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: prometheus
+    targetRevision: 21.0.1
+    helm:
+      valueFiles:
+        - monitoring/prometheus/values.yaml
     path: monitoring/prometheus
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: monitoring
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  ignoreDifferences:
-    - group: ""
-      kind: ConfigMap
-      name: prometheus-server
-      namespace: monitoring
