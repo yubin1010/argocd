@@ -11,7 +11,7 @@ spec:
     targetRevision: 26.0.1  # 사용하려는 Chart 버전
     helm:
       valueFiles:
-        - monitoring/prometheus/values.yaml  # Git에서 참조할 values 파일
+        - values2.yaml  # Git에서 참조할 values 파일
   destination:
     server: 'https://kubernetes.default.svc'  # EKS 클러스터
     namespace: monitoring  # Prometheus를 설치할 네임스페이스
