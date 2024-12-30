@@ -8,12 +8,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: prometheus-blackbox-exporter  # Blackbox Exporter의 라벨
+      app.kubernetes.io/name: prometheus-blackbox-exporter
   namespaceSelector:
     matchNames:
-      - monitoring  # Blackbox Exporter가 배포된 네임스페이스
+      - monitoring 
   endpoints:
-    - port: metrics            # Service의 포트 이름과 일치
+    - port: http            # Service의 포트 이름과 일치
       interval: 30s
       path: /probe             # Blackbox Exporter의 고정 경로
       params:
