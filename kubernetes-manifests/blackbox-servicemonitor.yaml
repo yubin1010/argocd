@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: blackbox-exporter
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-blackbox-exporter  # Blackbox Exporter의 라벨
+  namespaceSelector:
+    matchNames:
+      - monitoring  # Blackbox Exporter가 배포된 네임스페이스
+  endpoints:
+    - port: metrics            # Service의 포트 이름과 일치
+      interval: 30s
+      path: /probe             # Blackbox Exporter의 고정 경로
+      params:
+        module: [http_2xx]     # HTTP 200 응답 확인
+        target: ["k8s-default-weathers-b4f76c1143-ceb62df8f0c38008.elb.ap-northeast-3.amazonaws.com/weather/Seoul"]
+      relabelings:
+        - sourceLabels: [__address__]
+          targetLabel: __param_target
+        - targetLabel: __address__
+          replacement: prometheus-blackbox-exporter.monitoring.svc:9115

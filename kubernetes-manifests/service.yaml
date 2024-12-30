@@ -6,6 +6,8 @@ metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+  labels:
+    app: weather-app
 spec:
   selector:
     app: weather-app
