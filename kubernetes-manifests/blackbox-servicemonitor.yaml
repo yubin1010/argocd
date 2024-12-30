@@ -23,4 +23,4 @@ spec:
         - sourceLabels: [__address__]
           targetLabel: __param_target
         - targetLabel: __address__
-          replacement: prometheus-blackbox-exporter.monitoring.svc:9115
+          replacement: blackbox-exporter-prometheus-blackbox-exporter.monitoring.svc:9115
