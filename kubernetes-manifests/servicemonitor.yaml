@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: weather-app-monitor
+  namespace: monitoring
+  labels:
+    release: prometheus  # Prometheus Operator가 인식할 라벨
+spec:
+  selector:
+    matchLabels:
+      app: weather-app    # Service와 일치해야 함
+  namespaceSelector:
+    matchNames:
+      - default           # Service가 배포된 네임스페이스
+  endpoints:
+    - port: 80            # Service에서 노출한 포트 이름 또는 번호
+      interval: 15s       # Prometheus가 메트릭을 수집하는 주기
+      path: /metrics      # 앱의 메트릭 엔드포인트
